@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { Player, DefaultUi, Hls } from "@vime/react";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Player controls={true}>
+        <DefaultUi />
+        <Hls
+          version="latest"
+          config="https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+          poster="/media/poster.png"
         >
-          Learn React
-        </a>
-      </header>
+          <source data-src="/media/index.m3u8" type="application/x-mpegURL" />
+        </Hls>
+      </Player>
     </div>
   );
 }
